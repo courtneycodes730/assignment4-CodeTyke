@@ -2,6 +2,10 @@ import React from 'react';
 import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import ProgressBar from '../progressBar/ProgressBar';
+import Modal from "../modal/Modal";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 import './Styles.scss';
 
@@ -46,6 +50,10 @@ const LearningModule = ({setGameStatus}) => {
     })
   }
 
+  const [showModal, setShowModal] = React.useState(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+  }
 
   return (
     <div className="learningModule">
@@ -55,13 +63,15 @@ const LearningModule = ({setGameStatus}) => {
           <div className="learningModule--header">
             <div className="learningModule--title">
               { currentQuestion.title }
+              <FontAwesomeIcon icon={faInfoCircle} className="learningModule--title--info" onClick={() => setShowModal(true)} />
             </div>
+            <Modal showModal={showModal} content={currentQuestion.additionalInfo} handleCloseModal={handleCloseModal}/>
             <div className="learningModule--subHeader">
               { currentQuestion.additionalInfo }
             </div>
           </div>
 
-          <div className="learningModule--answerArea">
+          <div className="learningModule--answerArea" style={{zIndex: showModal ? -1 : "unset", position: showModal ? "relative" : "unset"}}>
             <div className="learningModule--selections">
               { possibleAnswers }
             </div>

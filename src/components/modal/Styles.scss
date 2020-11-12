@@ -1,0 +1,66 @@
+@import '../../styles/utils/colors';
+@import '../../styles/utils/breakpoints';
+@import '../../styles/utils/mixins';
+
+.modal {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  padding: 5%;
+  width: 85%;
+  z-index: 2;
+  position: relative;
+  top: 25%;
+
+  &--carrot{
+    position: fixed;
+    z-index: 2;
+    height: 5px;
+    width: 5px;
+    top: 20%;
+    left: 90%;
+
+    &::before {
+    content: "";
+    border-bottom: 20px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    }
+  }
+
+  &--wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &--backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: black;
+    opacity: 30%;
+  }
+
+  &--content {
+    flex-direction: column;
+    @include flex-spacing(space-between);
+
+    &--title {
+      color: $barney;
+      margin: 0px;
+    }
+
+    &--body {
+      color: black;
+    }
+  }
+}

@@ -5,6 +5,9 @@
 .learningModule {
     &--header {
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     &--title {
@@ -12,6 +15,20 @@
         color: $morning-sky;
         font-weight: 600;
         font-size: 1.5em;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        @media only screen and (max-width: $mobile) {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &--info {
+            @media only screen and (min-width: $mobile) {
+                display: none;
+            }
+        }
     }
 
     &--subHeader{
